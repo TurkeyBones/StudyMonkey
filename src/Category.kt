@@ -26,13 +26,25 @@ data class Category(val category: String) : Serializable {
         flashCardList.add(FlashCard(flashcard, answer))
     }
 
+    fun removeFlashCard(inflashcard: String) {
+        var i = 0
+        if(!flashCardList.isEmpty()) {
+            for (flashcard in flashCardList) {
+                if (flashcard.flashcard == inflashcard.toString()) {
+                    flashCardList.removeAt(i)
+                }
+                i++
+            }
+        }
+    }
+/*
     fun removeFlashCard(flashcard: String) {
         flashCardList.forEach({
             if(it.flashcard == flashcard) {
                 flashCardList.remove(it)
             }
         })
-    }
+    }*/
 
     //this overrides the array index operator
     fun get(index: Int) : FlashCard {
